@@ -31,6 +31,12 @@ Para interactuar con Barny, simplemente ejecuta:
 ```bash
 python main.py
 ```
+Escribe tu solicitud (ej. "Revisa este fragmento de código...") y Barny decidirá automáticamente qué herramientas invocar antes de darte su respuesta. Para salir, escribe `salir`.
+
+## Pruebas Realizadas
+1. **Caso Correcto:** 
+2. **Caso Ambiguo:** 
+3. **Código Problemático:** 
 
 ## Limitaciones Conocidas
 - Se debe utilizar Python 3.11+.

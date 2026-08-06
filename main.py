@@ -16,17 +16,17 @@ def main():
     try:
         chat = inicializar_chat()
     except ValueError as e:
-        print(f"❌ Error de configuración: {e}")
+        print(f"Error de configuración: {e}")
         print("Asegúrate de tener un archivo .env con tu GEMINI_API_KEY.")
         sys.exit(1)
     except errors.APIError as e:
-        print(f"❌ Error de API al conectar: {e}")
+        print(f"Error de API al conectar: {e}")
         sys.exit(1)
     except Exception as e:
-        print(f"❌ Error de conexión: {e}")
+        print(f"Error de conexión: {e}")
         sys.exit(1)
 
-    print("🤖 Barny está listo. ¿En qué puedo ayudarte hoy?\n")
+    print("Barny está listo. ¿En qué puedo ayudarte hoy?\n")
 
     while True:
         try:
@@ -37,7 +37,7 @@ def main():
                 break
                 
             if not mensaje.strip():
-                print("⚠️ Mensaje vacío. Por favor escribe algo.")
+                print("Mensaje vacío. Por favor escribe algo.")
                 continue
 
             print("Barny está analizando...")
@@ -46,22 +46,22 @@ def main():
             respuesta = enviar_mensaje(chat, mensaje)
             
             if not respuesta:
-                print("⚠️ El modelo no devolvió una respuesta válida (Respuesta vacía).")
+                print("El modelo no devolvió una respuesta válida (Respuesta vacía).")
             else:
-                print("\n🤖 Barny:\n")
+                print("\nBarny:\n")
                 print(respuesta)
                 print("-" * 60)
 
         # Errores específicos del SDK
         except errors.APIError as e:
             if "quota" in str(e).lower() or 429 in e.code:
-                print("❌ Error: Cuota de API agotada. Intenta más tarde.")
+                print("Error: Cuota de API agotada. Intenta más tarde.")
             else:
-                print(f"❌ Error de la API de Gemini: {e}")
+                print(f"Error de la API de Gemini: {e}")
         
         # Cualquier otro error (herramientas fallando, conexión perdida)
         except Exception as e:
-            print(f"❌ Error inesperado: Ocurrió un problema procesando tu solicitud.")
+            print(f"Error inesperado: Ocurrió un problema procesando tu solicitud.")
             print(f"Detalle: {e}")
             
         except KeyboardInterrupt:
