@@ -33,7 +33,7 @@ def main():
             mensaje = input("Tú > ")
             
             if mensaje.lower() in ['salir', 'exit', 'quit']:
-                print("¡Hasta luego! Recuerda seguir los principios SOLID.")
+                print("¡Hasta luego!")
                 break
                 
             if not mensaje.strip():
